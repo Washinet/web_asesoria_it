@@ -34,6 +34,15 @@ function sendContactEmail($data)
         $mail->SMTPSecure = $config['smtp_secure']; // tls or ssl
         $mail->Port = $config['smtp_port'];
 
+        // Fix for cPanel/Shared Hosting certificate issues
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
         //Recipients
         $mail->setFrom($config['from_email'], $config['from_name']);
 
