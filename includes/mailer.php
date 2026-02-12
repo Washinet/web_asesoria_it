@@ -27,12 +27,12 @@ function sendContactEmail($data)
     try {
         //Server settings
         $mail->isSMTP();
-        $mail->Host = $config['smtp_host'];
+        $mail->Host = trim($config['smtp_host']);
         $mail->SMTPAuth = true;
-        $mail->Username = $config['smtp_user'];
-        $mail->Password = $config['smtp_pass'];
-        $mail->SMTPSecure = $config['smtp_secure']; // tls or ssl
-        $mail->Port = $config['smtp_port'];
+        $mail->Username = trim($config['smtp_user']);
+        $mail->Password = trim($config['smtp_pass']);
+        $mail->SMTPSecure = trim($config['smtp_secure']); // tls or ssl
+        $mail->Port = trim($config['smtp_port']);
 
         // Fix for cPanel/Shared Hosting certificate issues
         $mail->SMTPOptions = array(
