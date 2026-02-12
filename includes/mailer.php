@@ -26,8 +26,6 @@ function sendContactEmail($data)
 
     try {
         //Server settings
-        $mail->SMTPDebug = 2; // Enable verbose debug output
-        $mail->Debugoutput = 'html'; // Format output as HTML for better readability
         $mail->isSMTP();
         $mail->Host = trim($config['smtp_host']);
         $mail->SMTPAuth = true;
