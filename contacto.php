@@ -3,10 +3,31 @@ $pageTitle = 'Contacto';
 $pageDescription = 'Contáctanos para obtener asesoría tecnológica profesional. Estamos aquí para ayudarte con tus proyectos de IT, ciberseguridad y desarrollo.';
 include 'includes/header.php';
 
-// Simple form message handling (mockup)
+// Email handling logic
+require_once 'includes/mailer.php';
+
 $successMessage = '';
+$errorMessage = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $successMessage = '¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.';
+    // Collect form data
+    $data = [
+        'nombre' => $_POST['nombre'] ?? '',
+        'email' => $_POST['email'] ?? '',
+        'telefono' => $_POST['telefono'] ?? '',
+        'servicio' => $_POST['servicio'] ?? '',
+        'mensaje' => $_POST['mensaje'] ?? '',
+        'subject' => 'Consulta de ' . ($_POST['servicio'] ?? 'Servicio General')
+    ];
+
+    try {
+        if (sendContactEmail($data)) {
+            $successMessage = '¡Gracias por tu mensaje! Nos pondremos en contacto contigo a la brevedad.';
+        }
+    }
+    catch (Exception $e) {
+        $errorMessage = 'Lo sentimos, hubo un error al enviar tu mensaje: ' . $e->getMessage();
+    }
 }
 ?>
 
@@ -49,8 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <h4 class="font-heading font-semibold text-text-main text-lg mb-1">Nuestra Ubicación</h4>
-                            <p class="text-text-secondary text-sm">Av. Tecnología 1234, Oficina 501, Ciudad de
-                                Innovación, CP 56789</p>
+                            <p class="text-text-secondary text-sm">Apoquindo 6410 oficina 1004</p>
                         </div>
                     </div>
 
@@ -61,8 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <h4 class="font-heading font-semibold text-text-main text-lg mb-1">Teléfonos</h4>
-                            <p class="text-text-secondary text-sm">Oficina: +1 (234) 567-890</p>
-                            <p class="text-text-secondary text-sm">Soporte 24/7: +1 (234) 098-765</p>
+                            <p class="text-text-secondary text-sm">Oficina: +56 (9) 5215 6460</p>
+                            <p class="text-text-secondary text-sm">Soporte 24/7: +56 (9) 5215 6460</p>
                         </div>
                     </div>
 
@@ -73,8 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <h4 class="font-heading font-semibold text-text-main text-lg mb-1">Correo Electrónico</h4>
-                            <p class="text-text-secondary text-sm">Información: info@infotechasesoria.com</p>
-                            <p class="text-text-secondary text-sm">Servicio al Cliente: soporte@infotechasesoria.com</p>
+                            <p class="text-text-secondary text-sm">Información: info@asesoriatecnologica.cl</p>
+                            <p class="text-text-secondary text-sm">Servicio al Cliente: soporte@asesoriatecnologica.cl
+                            </p>
                         </div>
                     </div>
 
@@ -85,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <div>
                             <h4 class="font-heading font-semibold text-text-main text-lg mb-1">Horario de Atención</h4>
-                            <p class="text-text-secondary text-sm">Lunes a Viernes: 8:00 AM – 6:00 PM</p>
-                            <p class="text-text-secondary text-sm">Sábado: 9:00 AM – 1:00 PM</p>
+                            <p class="text-text-secondary text-sm">Lunes a Viernes: 08:30 – 19:00 </p>
+                            <p class="text-text-secondary text-sm">Sábado y Domingo: 08:30 – 16:00 </p>
                         </div>
                     </div>
                 </div>
@@ -117,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Right: Contact Form -->
             <div class="fade-in">
-                <div class="glass-card rounded-3xl p-8 md:p-10 glow-border">
+                <div class="bg-dark-alt rounded-3xl p-8 md:p-10 border border-glass-border">
                     <h3 class="font-heading text-2xl font-bold text-text-main mb-6">Envíanos un <span
                             class="text-cyan-electric">Mensaje</span></h3>
 
@@ -126,6 +147,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         class="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl mb-6 text-sm flex items-center">
                         <i class="fas fa-check-circle mr-3"></i>
                         <?php echo $successMessage; ?>
+                    </div>
+                    <?php
+endif; ?>
+
+                    <?php if ($errorMessage): ?>
+                    <div
+                        class="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl mb-6 text-sm flex items-center">
+                        <i class="fas fa-exclamation-circle mr-3"></i>
+                        <?php echo $errorMessage; ?>
                     </div>
                     <?php
 endif; ?>
@@ -156,7 +186,7 @@ endif; ?>
                                     class="text-xs uppercase tracking-widest font-semibold text-text-secondary ml-1">Teléfono</label>
                                 <input type="tel" id="telefono" name="telefono"
                                     class="w-full bg-dark-primary border border-glass-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-cyan-electric/50 focus:ring-1 focus:ring-cyan-electric/20 transition-all placeholder:text-text-secondary/30"
-                                    placeholder="+1 (234) 567-890">
+                                    placeholder="+56 (9) 1234-5678">
                             </div>
                             <div class="space-y-2">
                                 <label for="servicio"
@@ -197,9 +227,8 @@ endif; ?>
 
 <!-- MAP SECTION -->
 <section class="h-96 relative grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
-    <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d-70.0!3d-33.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDAwJzAwLjAiUyA3MMKwMDAnMDAuMCJX!5e0!3m2!1ses!2scl!4v1234567890!5m2!1ses!2scl"
-        class="w-full h-full border-0" allowfullscreen="" loading="lazy">
+    <iframe src="https://www.google.com/maps?q=Apoquindo%206410%2C%20Las%20Condes%2C%20Santiago%2C%20Chile&output=embed"
+        class="w-full h-full border-0" allowfullscreen loading="lazy">
     </iframe>
 </section>
 

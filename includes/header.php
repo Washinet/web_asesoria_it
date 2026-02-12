@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($pageTitle) ? $pageTitle . ' | InfoTech Asesoría' : 'InfoTech Asesoría – Servicio de Asesoría Tecnológica Informática'; ?></title>
+    <title><?php echo isset($pageTitle) ? $pageTitle . ' | InfoTech Asesoría Tecnológica' : 'InfoTech Asesoría – Servicio de Asesoría Tecnológica Informática'; ?></title>
     <meta name="description" content="<?php echo isset($pageDescription) ? $pageDescription : 'Servicio profesional de asesoría tecnológica e informática. Consultoría IT, desarrollo de software, ciberseguridad, redes y cloud.'; ?>">
     
     <!-- Tailwind CSS -->

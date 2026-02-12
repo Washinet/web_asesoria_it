@@ -50,19 +50,19 @@
                 <ul class="space-y-4">
                     <li class="flex items-start space-x-3">
                         <i class="fas fa-map-marker-alt text-cyan-electric mt-1"></i>
-                        <span class="text-text-secondary text-sm">Av. Tecnología 1234, Oficina 501<br>Ciudad, País</span>
+                        <span class="text-text-secondary text-sm">Apoquindo 6410 oficina 1004<br>Las Condes, Chile</span>
                     </li>
                     <li class="flex items-center space-x-3">
                         <i class="fas fa-phone-alt text-cyan-electric"></i>
-                        <a href="tel:+1234567890" class="text-text-secondary hover:text-cyan-electric transition-colors text-sm">+1 (234) 567-890</a>
+                        <a href="tel:+1234567890" class="text-text-secondary hover:text-cyan-electric transition-colors text-sm">+56 (9) 5215 6460</a>
                     </li>
                     <li class="flex items-center space-x-3">
                         <i class="fas fa-envelope text-cyan-electric"></i>
-                        <a href="mailto:info@infotechasesoria.com" class="text-text-secondary hover:text-cyan-electric transition-colors text-sm">info@infotechasesoria.com</a>
+                        <a href="mailto:wpaul@asesoriatecnologica.cl" class="text-text-secondary hover:text-cyan-electric transition-colors text-sm">wpaul@asesoriatecnologica.cl</a>
                     </li>
                     <li class="flex items-center space-x-3">
                         <i class="fas fa-clock text-cyan-electric"></i>
-                        <span class="text-text-secondary text-sm">Lun – Vie: 8:00 – 18:00</span>
+                        <span class="text-text-secondary text-sm">Lun – Vie: 08:30 – 19:00</span>
                     </li>
                 </ul>
             </div>
@@ -71,7 +71,7 @@
         <!-- Bottom bar -->
         <div class="section-divider mt-12 mb-8"></div>
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p class="text-text-secondary text-xs">&copy; <?php echo date('Y'); ?> InfoTech Asesoría. Todos los derechos reservados.</p>
+            <p class="text-text-secondary text-xs">&copy; <?php echo date('Y'); ?> InfoTech Asesoría Tecnologica. Todos los derechos reservados.</p>
             <p class="text-text-secondary text-xs">Servicio de Asesoría Tecnológica Informática</p>
         </div>
     </div>

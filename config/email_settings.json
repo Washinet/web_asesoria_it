@@ -1,0 +1,9 @@
+{
+    "smtp_host": "smtp.gmail.com",
+    "smtp_port": "587",
+    "smtp_user": "wapa1999@gmail.com",
+    "smtp_pass": "lirbwhgptcjlfepl",
+    "smtp_secure": "tls",
+    "from_email": "wpaul@asesoriatecnologica.cl",
+    "from_name": "Contacto"
+}
