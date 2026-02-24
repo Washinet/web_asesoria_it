@@ -46,11 +46,10 @@ function sendContactEmail($data)
         //Recipients
         $mail->setFrom($config['from_email'], $config['from_name']);
 
-        // Send to the admin (using the same 'from' email or a specific admin email)
-        // For now, we assume the site owner wants to receive these emails at the 'from_email' address
-        // or we could add an 'admin_email' field to the config. 
-        // Let's settle on sending to the 'from_email' as the main contact for now.
-        $mail->addAddress($config['from_email'], 'Administrador');
+        // Send to the admin email (separate from the sender/from address)
+        // admin_email is where contact form messages are delivered
+        $adminEmail = !empty($config['admin_email']) ? trim($config['admin_email']) : trim($config['from_email']);
+        $mail->addAddress($adminEmail, 'Administrador');
 
         // Add Reply-To header so admin can reply to the user
         $mail->addReplyTo($data['email'], $data['nombre']);

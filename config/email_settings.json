@@ -1,9 +1,10 @@
 {
-    "smtp_host": "smtp.gmail.com",
-    "smtp_port": "587",
-    "smtp_user": "wapa1999@gmail.com",
+    "smtp_host": "cpanel03.nnw.cl",
+    "smtp_port": "465",
+    "smtp_user": "huawei@asesoriatecnologica.cl",
     "smtp_pass": "lirbwhgptcjlfepl",
-    "smtp_secure": "tls",
-    "from_email": "wpaul@asesoriatecnologica.cl",
-    "from_name": "Contacto"
+    "smtp_secure": "ssl",
+    "from_email": "huawei@asesoriatecnologica.cl",
+    "from_name": "Contacto",
+    "admin_email": "washinet@icloud.com"
 }
