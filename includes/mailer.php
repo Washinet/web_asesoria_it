@@ -25,6 +25,10 @@ function sendContactEmail($data)
     $mail = new PHPMailer(true);
 
     try {
+        // Character encoding for Spanish (ñ, é, á, etc.)
+        $mail->CharSet = 'UTF-8';
+        $mail->Encoding = 'base64';
+
         //Server settings
         $mail->isSMTP();
         $mail->Host = trim($config['smtp_host']);
